@@ -1,0 +1,13 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "babel src -d lib",
+    "build:watch": "yarn clean && yarn build --watch",
+    "prepare": "yarn clean && yarn build"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

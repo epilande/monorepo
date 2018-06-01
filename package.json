@@ -1,0 +1,31 @@
+{
+  "name": "monorepo",
+  "description": "Monorepo example",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build:math": "yarn workspace math build",
+    "build:utils": "yarn workspace utils build",
+    "start:build": "npm-run-all --parallel \"build:* --watch\"",
+    "start:webpack": "webpack-dev-server",
+    "prestart": "yarn clean && npm-run-all build:*",
+    "start": "npm-run-all -l --parallel start:*",
+    "dist": "webpack",
+    "clean": "rimraf packages/**/lib"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "clean-webpack-plugin": "^0.1.19",
+    "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.3",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  }
+}

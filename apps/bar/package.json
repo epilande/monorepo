@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "bar",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "math": "1.0.0",
+    "utils": "1.0.0"
+  }
+}
