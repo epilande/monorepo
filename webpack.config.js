@@ -1,32 +1,30 @@
-const path = require('path');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const baseConfig = require('./webpack.config.base');
+const devConfig = require('./webpack.config.dev');
+const prodConfig = require('./webpack.config.prod');
 
-module.exports = {
-  mode: 'development',
-  entry: {
-    foo: './apps/foo/src/index.js',
-    bar: './apps/bar/src/index.js',
-  },
-  output: {
-    filename: '[name]/bundle.[hash].js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-  },
-  plugins: [
-    new CleanWebpackPlugin(['./dist']),
-    new HtmlWebpackPlugin({
-      template: './apps/foo/src/index.html',
-      filename: 'foo/index.html',
-      chunks: ['foo'],
-    }),
-    new HtmlWebpackPlugin({
-      template: './apps/bar/src/index.html',
-      filename: 'bar/index.html',
-      chunks: ['bar'],
-    }),
-  ],
+const config = function(env) {
+  const envConfig = env.prod ? prodConfig : devConfig;
+
+  return merge(baseConfig, envConfig, {
+    entry: {
+      foo: './apps/foo/src/index.js',
+      bar: './apps/bar/src/index.js',
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './apps/foo/src/index.html',
+        filename: 'foo/index.html',
+        chunks: ['foo'],
+      }),
+      new HtmlWebpackPlugin({
+        template: './apps/bar/src/index.html',
+        filename: 'bar/index.html',
+        chunks: ['bar'],
+      }),
+    ],
+  });
 };
+
+module.exports = config;
