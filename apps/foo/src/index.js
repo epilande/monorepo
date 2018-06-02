@@ -6,5 +6,6 @@ function component(innerHTML) {
   return element;
 }
 
+document.body.appendChild(component(`env: ${process.env.NODE_ENV}`));
 document.body.appendChild(component(`multiply(1, 2): ${multiply(1, 2)}`));
 document.body.appendChild(component(`add(1, 2): ${add(1, 2)}`));
