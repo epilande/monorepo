@@ -2,6 +2,10 @@
   "private": true,
   "name": "bar",
   "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-dev-server --env.dev",
+    "dist": "webpack --env.prod"
+  },
   "license": "MIT",
   "dependencies": {
     "math": "1.0.0",

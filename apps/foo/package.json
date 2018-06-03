@@ -3,6 +3,10 @@
   "name": "foo",
   "version": "1.0.0",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --env.dev",
+    "dist": "webpack --env.prod"
+  },
   "dependencies": {
     "math": "1.0.0"
   }

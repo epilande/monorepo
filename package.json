@@ -10,10 +10,10 @@
     "build:math": "yarn workspace math build",
     "build:utils": "yarn workspace utils build",
     "start:build": "npm-run-all --parallel \"build:* --watch\"",
-    "start:webpack": "webpack-dev-server",
+    "start:webpack": "webpack-dev-server --env.dev",
     "start": "npm-run-all -l --parallel start:*",
     "prepare": "npm-run-all clean build:*",
-    "dist": "webpack",
+    "dist": "webpack --env.prod",
     "clean": "rimraf packages/**/lib"
   },
   "devDependencies": {
@@ -26,6 +26,7 @@
     "rimraf": "^2.6.2",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
   }
 }
